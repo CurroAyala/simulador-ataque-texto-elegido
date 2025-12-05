@@ -21,7 +21,7 @@ Este proyecto es una aplicación educativa interactiva desarrollada en **Python*
 La aplicación se encuentra desplegada [aquí](https://simulador-ataque-texto-elegido.streamlit.app/).
 
 
-## 🧮 Fundamento Matemático: criptografía urea
+## 🧮 Fundamento matemático: criptografía urea
 
 Alexey Petrovich Stakhov (7 de mayo de 1939, Ucrania) desarrolló el criptosistema áureo (*golden cryptography*) basándose en la matriz $Q$:
 
@@ -115,19 +115,27 @@ $$
 Codificación numérica (alfabeto español):
 
 $$
-P = \text{HOLA} \rightarrow \begin{pmatrix} H & O \\ L & A \end{pmatrix} \rightarrow \begin{pmatrix} 7 & 15 \\ 11 & 0 \end{pmatrix}
+P = \text{HOLA} \rightarrow \begin{pmatrix} H & O \\
+L & A \end{pmatrix} \rightarrow \begin{pmatrix} 7 & 15 \\
+11 & 0 \end{pmatrix}
 $$
 
 Cálculo de $C = P \times Q^{15}$:
 
 $$
-C = \begin{pmatrix} 7 & 15 \\ 11 & 0 \end{pmatrix} \times \begin{pmatrix} 987 & 610 \\ 610 & 377 \end{pmatrix} = \begin{pmatrix} 16059 & 9925 \\ 10857 & 6710 \end{pmatrix}
+C = \begin{pmatrix} 7 & 15 \\
+11 & 0 \end{pmatrix} \times \begin{pmatrix} 987 & 610 \\
+610 & 377 \end{pmatrix} = \begin{pmatrix} 16059 & 9925 \\
+10857 & 6710 \end{pmatrix}
 $$
 
 **Ejemplo 3:** Descifrar el mensaje anterior.
 
 $$
-P = \begin{pmatrix} 16059 & 9925 \\ 10857 & 6710 \end{pmatrix} \times (-1)^{15} \begin{pmatrix} 377 & -610 \\ -610 & 987 \end{pmatrix} = \begin{pmatrix} 7 & 15 \\ 11 & 0 \end{pmatrix}
+P = \begin{pmatrix} 16059 & 9925 \\
+10857 & 6710 \end{pmatrix} \times (-1)^{15} \begin{pmatrix} 377 & -610 \\
+-610 & 987 \end{pmatrix} = \begin{pmatrix} 7 & 15 \\
+11 & 0 \end{pmatrix}
 $$
 
 Al decodificar los números, recuperamos "HOLA".
@@ -145,13 +153,17 @@ Si un atacante tiene acceso al sistema de cifrado, puede obtener la clave privad
 El atacante envía una matriz $P$ diseñada específicamente para aislar los componentes de la clave:
 
 $$
-P = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}
+P = \begin{pmatrix} 1 & 0 \\
+0 & 0 \end{pmatrix}
 $$
 
 El sistema cifrará $P$ devolviendo $C$:
 
 $$
-C = P \times Q^n = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \times \begin{pmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{pmatrix} = \begin{pmatrix} F_{n+1} & F_n \\ 0 & 0 \end{pmatrix}
+C = P \times Q^n = \begin{pmatrix} 1 & 0 \\
+0 & 0 \end{pmatrix} \times \begin{pmatrix} F_{n+1} & F_n \\
+F_n & F_{n-1} \end{pmatrix} = \begin{pmatrix} F_{n+1} & F_n \\
+0 & 0 \end{pmatrix}
 $$
 
 Como se observa, el mensaje cifrado expone directamente el valor $F_n$ en la posición (Fila 1, Columna 2). El atacante solo necesita buscar este valor en la sucesión de Fibonacci para encontrar el índice $n$ (la clave privada).
