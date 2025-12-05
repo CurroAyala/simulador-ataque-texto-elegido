@@ -69,12 +69,9 @@ def ventana_principal():
             btn_cifrar = st.button("Cifrar matriz", type="primary", use_container_width=True)
 
             if st.button("🔄 Generar nueva clave aleatoria"):
-            # Generamos nueva n
                 st.session_state.n = random.randint(5, 20)
-                # Borramos el input anterior para que no confunda
                 if "input_clave" in st.session_state:
                     del st.session_state.input_clave
-                # Forzamos recarga de la app para que 'n' se actualice globalmente
                 st.rerun()
 
         with col_main_2:
