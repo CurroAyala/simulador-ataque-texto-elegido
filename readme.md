@@ -100,10 +100,11 @@ P = C \times Q^{-n}
 $$
 
 Donde la matriz de descifrado se define como:
+
 $$
 Q^{-n} = (-1)^{-n} \begin{pmatrix}
-   F_{n-1} & -F_{n} \\
-   -F_{n} & F_{n+1}
+F_{n-1} & -F_{n} \\
+-F_{n} & F_{n+1}
 \end{pmatrix}
 $$
 
@@ -112,11 +113,13 @@ $$
 **Ejemplo 2:** Cifrar el mensaje $P =$ "HOLA" con $n=15$.
 
 Codificación numérica (alfabeto español):
+
 $$
-P = \text{"HOLA"} \rightarrow \begin{pmatrix} H & O \\ L & A \end{pmatrix} \rightarrow \begin{pmatrix} 7 & 15 \\ 11 & 0 \end{pmatrix}
+P = \text{HOLA} \rightarrow \begin{pmatrix} H & O \\ L & A \end{pmatrix} \rightarrow \begin{pmatrix} 7 & 15 \\ 11 & 0 \end{pmatrix}
 $$
 
 Cálculo de $C = P \times Q^{15}$:
+
 $$
 C = \begin{pmatrix} 7 & 15 \\ 11 & 0 \end{pmatrix} \times \begin{pmatrix} 987 & 610 \\ 610 & 377 \end{pmatrix} = \begin{pmatrix} 16059 & 9925 \\ 10857 & 6710 \end{pmatrix}
 $$
@@ -137,7 +140,7 @@ El principal problema de la criptografía áurea es que resulta "ingenua" ante u
 
 #### Ataque de Texto Elegido
 
-Si un atacante tiene acceso al sistema de cifrado (caja negra), puede obtener la clave privada $n$ fácilmente mediante un **Chosen Plaintext Attack**.
+Si un atacante tiene acceso al sistema de cifrado, puede obtener la clave privada $n$ fácilmente mediante un **Chosen Plaintext Attack**.
 
 El atacante envía una matriz $P$ diseñada específicamente para aislar los componentes de la clave:
 
